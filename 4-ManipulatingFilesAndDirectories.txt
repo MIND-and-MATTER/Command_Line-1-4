@@ -1,1 +1,173 @@
+# Concepts Addressed: Shell, Prompt, Directory,Redirection, Parameter.
+~/command-line-1-4-lucca001$ pwd
+/home/runner/command-line-1-4-lucca001
+~/command-line-1-4-lucca001$ ls
+1-WhatIsTheShell.txt
+2-Navigation.txt
+3-ExploringTheSystemOutput.txt
+4-ManipulatingFilesAndDirectories.txt
+README.md
+~/command-line-1-4-lucca001$ mkdir saul paul
+~/command-line-1-4-lucca001$ ls
+1-WhatIsTheShell.txt               paul
+2-Navigation.txt               README.md
+3-ExploringTheSystemOutput.txt         saul
+4-ManipulatingFilesAndDirectories.txt
+~/command-line-1-4-lucca001$ cd saul
+~/command-line-1-4-lucca001/saul$ pwd
+/home/runner/command-line-1-4-lucca001/saul
+~/command-line-1-4-lucca001/saul$ ls
+~/command-line-1-4-lucca001/saul$ touch spear
+~/command-line-1-4-lucca001/saul$ ls
+spear
+~/command-line-1-4-lucca001/saul$ cd ..
+~/command-line-1-4-lucca001$ mv paul TheGrave
+~/command-line-1-4-lucca001$ cd saul
+~/command-line-1-4-lucca001/saul$ rm spear
+~/command-line-1-4-lucca001/saul$ cd ..
+~/command-line-1-4-lucca001$ mv saul TheGrave/
+~/command-line-1-4-lucca001$ cd TheGrave/
+~/command-line-1-4-lucca001/TheGrave$ ls
+saul
+ ~/command-line-1-4-lucca001/TheGrave$ cd ..
+~/command-line-1-4-lucca001$ rm -r TheGrave/
+~/command-line-1-4-lucca001$ 
 
+~/command-line-1-4-lucca001-1$ pwd
+/home/runner/command-line-1-4-lucca001-1
+~/command-line-1-4-lucca001-1$ ls
+1-WhatIsTheShell.txt
+2-Navigation.txt
+3-ExploringTheSystemOutput.txt
+4-ManipulatingFilesAndDirectories.txt
+README.md
+~/command-line-1-4-lucca001-1$ cd
+~$ mkdir playground
+~$ cd playground
+~/playground$ mkdir swings ladder
+~/playground$ cp /etc/passwd .
+~/playground$ ls -l
+total 12
+drwxr-xr-x 2 runner runner 4096 Feb 10 22:30 ladder
+-rw-r--r-- 1 runner runner 1065 Feb 10 22:32 passwd
+drwxr-xr-x 2 runner runner 4096 Feb 10 22:30 swings
+~/playground$ cp -v /etc/passwd .
+'/etc/passwd' -> './passwd'
+~/playground$ cp -i /etc/passwd .
+cp: overwrite './passwd'? y
+~/playground$ mv passwd fun
+~/playground$ mv fun swings/
+~/playground$ ls
+ladder  swings
+~/playground$ cd swings/
+~/playground/swings$ ls
+fun
+~/playground/swings$ cd ..
+~/playground$ pwd
+/home/runner/playground
+~/playground$ mv swings/fun ladder/
+~/playground$ ls
+ladder  swings
+~/playground$ cd ladder/
+~/playground/ladder$ ls
+fun
+~/playground/ladder$ cd ..
+~/playground$ mv ladder/fun .
+~/playground$ ls
+fun  ladder  swings
+~/playground$ mv fun swings/
+~/playground$ mv swings/ ladder/
+~/playground$ ls
+ladder
+~/playground$ cd ladder/ 
+~/playground/ladder$ ls
+swings
+~/playground/ladder$ cd ..
+~/playground$ ls -l ladder/
+total 4
+drwxr-xr-x 2 runner runner 4096 Feb 10 22:47 swings
+~/playground$ mv ladder/swings/ .
+~/playground$ mv swings/fun .
+~/playground$ ls
+fun  ladder  swings
+~/playground$ ln fun fun-hard
+~/playground$ ln fun swings/fun-hard
+~/playground$ ln fun ladder/fun-hard
+~/playground$ ls -l
+total 16
+-rw-r--r-- 4 runner runner 1065 Feb 10 22:33 fun
+-rw-r--r-- 4 runner runner 1065 Feb 10 22:33 fun-hard
+drwxr-xr-x 2 runner runner 4096 Feb 10 22:50 ladder
+drwxr-xr-x 2 runner runner 4096 Feb 10 22:50 swings
+~/playground$ ls -li
+total 16
+899127 -rw-r--r-- 4 runner runner 1065 Feb 10 22:33 fun
+899127 -rw-r--r-- 4 runner runner 1065 Feb 10 22:33 fun-hard
+953332 drwxr-xr-x 2 runner runner 4096 Feb 10 22:50 ladder
+953326 drwxr-xr-x 2 runner runner 4096 Feb 10 22:50 swings
+~/playground$ ls -li -r
+total 16
+953326 drwxr-xr-x 2 runner runner 4096 Feb 10 22:50 swings
+953332 drwxr-xr-x 2 runner runner 4096 Feb 10 22:50 ladder
+899127 -rw-r--r-- 4 runner runner 1065 Feb 10 22:33 fun-hard
+899127 -rw-r--r-- 4 runner runner 1065 Feb 10 22:33 fun
+~/playground$ ln -s fun sun-sym
+~/playground$ ln -s fun fun-sym
+~/playground$ ln -s ../fun swings/funsym
+~/playground$ ln -s ../fun swings/fun-sym
+~/playground$ ln -s ../fun ladder/fun-sym
+~/playground$ ls -l swings/
+total 4
+-rw-r--r-- 4 runner runner 1065 Feb 10 22:33 fun-hard
+lrwxrwxrwx 1 runner runner    6 Feb 10 22:55 funsym -> ../fun
+lrwxrwxrwx 1 runner runner    6 Feb 10 22:55 fun-sym -> ../fun
+~/playground$ rm swings/funsym
+~/playground$ ls -l swings/
+total 4
+-rw-r--r-- 4 runner runner 1065 Feb 10 22:33 fun-hard
+lrwxrwxrwx 1 runner runner    6 Feb 10 22:55 fun-sym -> ../fun
+~/playground$ ln -s swings/ swings-sym
+~/playground$ ls -l
+total 16
+-rw-r--r-- 4 runner runner 1065 Feb 10 22:33 fun
+-rw-r--r-- 4 runner runner 1065 Feb 10 22:33 fun-hard
+lrwxrwxrwx 1 runner runner    3 Feb 10 22:54 fun-sym -> fun
+drwxr-xr-x 2 runner runner 4096 Feb 10 22:55 ladder
+lrwxrwxrwx 1 runner runner    3 Feb 10 22:54 sun-sym -> fun
+drwxr-xr-x 2 runner runner 4096 Feb 10 22:57 swings
+lrwxrwxrwx 1 runner runner    7 Feb 10 22:58 swings-sym -> swings/
+~/playground$ rm fun-hard 
+~/playground$ ls -l
+total 12
+-rw-r--r-- 3 runner runner 1065 Feb 10 22:33 fun
+lrwxrwxrwx 1 runner runner    3 Feb 10 22:54 fun-sym -> fun
+drwxr-xr-x 2 runner runner 4096 Feb 10 22:55 ladder
+lrwxrwxrwx 1 runner runner    3 Feb 10 22:54 sun-sym -> fun
+drwxr-xr-x 2 runner runner 4096 Feb 10 22:57 swings
+lrwxrwxrwx 1 runner runner    7 Feb 10 22:58 swings-sym -> swings/
+~/playground$ rm -i fun
+rm: remove regular file 'fun'? y
+~/playground$ ls -l
+total 8
+lrwxrwxrwx 1 runner runner    3 Feb 10 22:54 fun-sym -> fun
+drwxr-xr-x 2 runner runner 4096 Feb 10 22:55 ladder
+lrwxrwxrwx 1 runner runner    3 Feb 10 22:54 sun-sym -> fun
+drwxr-xr-x 2 runner runner 4096 Feb 10 22:57 swings
+lrwxrwxrwx 1 runner runner    7 Feb 10 22:58 swings-sym -> swings/
+~/playground$ more fun-sym
+more: stat of fun-sym failed: No such file or directory
+~/playground$ rm fun-sym swings-sym
+~/playground$ ls -l
+total 8
+drwxr-xr-x 2 runner runner 4096 Feb 10 22:55 ladder
+lrwxrwxrwx 1 runner runner    3 Feb 10 22:54 sun-sym -> fun
+drwxr-xr-x 2 runner runner 4096 Feb 10 22:57 swings
+~/playground$ cd
+~$ pwd
+/home/runner
+~$ ls
+command-line-1-4-lucca001-1  _test_runner.py
+playground
+~$ rm -r playground/
+~$ exit
+exit
