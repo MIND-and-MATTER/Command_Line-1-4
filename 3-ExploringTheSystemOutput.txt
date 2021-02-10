@@ -1,1 +1,70 @@
+# Concepts Addressed: Shell, Directory, File permission.
+~/command-line-1-4-lucca001$ ls
+1-WhatIsTheShell.txt
+2-Navigation.txt
+3-ExploringTheSystemOutput.txt
+4-ManipulatingFilesAndDirectories.txt
+README.md
+~/command-line-1-4-lucca001$ ls /usr
+bin  games    lib    libexec  sbin   src
+doc  include  lib32  local    share
+~/command-line-1-4-lucca001$ ls ~ /usr
+/home/runner:
+command-line-1-4-lucca001  _test_runner.py
 
+/usr:
+bin  games    lib    libexec  sbin   src
+doc  include  lib32  local    share
+~/command-line-1-4-lucca001$ ls -l
+total 20
+-rw-r--r-- 1 runner runner 1553 Feb  4 20:51 1-WhatIsTheShell.txt
+-rw-r--r-- 1 runner runner  428 Feb  9 20:53 2-Navigation.txt
+-rw-r--r-- 1 runner runner    1 Feb  4 20:30 3-ExploringTheSystemOutput.txt
+-rw-r--r-- 1 runner runner    1 Feb  4 20:30 4-ManipulatingFilesAndDirectories.txt
+-rw-r--r-- 1 runner runner  246 Feb  4 20:30 README.md
+~/command-line-1-4-lucca001$ ls -lt
+total 20
+-rw-r--r-- 1 runner runner  428 Feb  9 20:53 2-Navigation.txt
+-rw-r--r-- 1 runner runner 1553 Feb  4 20:51 1-WhatIsTheShell.txt
+-rw-r--r-- 1 runner runner    1 Feb  4 20:30 3-ExploringTheSystemOutput.txt
+-rw-r--r-- 1 runner runner    1 Feb  4 20:30 4-ManipulatingFilesAndDirectories.txt
+-rw-r--r-- 1 runner runner  246 Feb  4 20:30 README.md
+~/command-line-1-4-lucca001$ ls -lt --reverse
+total 20
+-rw-r--r-- 1 runner runner  246 Feb  4 20:30 README.md
+-rw-r--r-- 1 runner runner    1 Feb  4 20:30 4-ManipulatingFilesAndDirectories.txt
+-rw-r--r-- 1 runner runner    1 Feb  4 20:30 3-ExploringTheSystemOutput.txt
+-rw-r--r-- 1 runner runner 1553 Feb  4 20:51 1-WhatIsTheShell.txt
+-rw-r--r-- 1 runner runner  428 Feb  9 20:53 2-Navigation.txt
+~/command-line-1-4-lucca001$ file picture.jpgpicture.jpg: cannot open `picture.jpg' (No such file or directory)
+~/command-line-1-4-lucca001$ more /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nol
+ogin
+irc:x:39:39:ircd:/var/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib
+/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologi
+n
+_apt:x:100:65534::/nonexistent:/usr/sbin/nologin
+runner:x:1000:1000::/home/runner:/bin/bash
+redis:x:101:101::/var/lib/redis:/usr/sbin/nologin
+sshd:x:102:65534::/run/sshd:/usr/sbin/nologin
+~/command-line-1-4-lucca001$ cd
+~$ ls
+command-line-1-4-lucca001  _test_runner.py
+~$ exit
+exit
